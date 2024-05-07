@@ -8,42 +8,36 @@ public class VibrationTest : MonoBehaviour
     public float duration;
 
     [SerializeField] XRBaseController controller;
-
-    void Start()
-    {
-        XRBaseInteractable interactable = GetComponent<XRBaseInteractable>();
-        //Debug.Log("interactable is: " + interactable.ToString());
-        //interactable.activated.AddListener(TriggerHaptic);
-    }
+    [SerializeField] XRDirectInteractor controllerInteractor;
 
     float timer = 0.0f;
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > 360.0f) { timer -= 360; }
-        float value = Mathf.Sin(Mathf.Deg2Rad * timer * 50.0f);
-
-        if (value > 0.5)
+        if (controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
         {
-            TriggerHaptic(controller);
+            DoPulses();
         }
     }
 
-
-    void TriggerHaptic(BaseInteractionEventArgs eventArgs)
+    void DoPulses()
     {
-        Debug.Log("Called first trigger active");
+        timer += Time.deltaTime;
 
-        if (eventArgs.interactorObject is XRBaseControllerInteractor controllerInteractor)
-        {
-            TriggerHaptic(controllerInteractor.xrController);
-        }
+        if (timer > 0.5f) { TriggerHaptic(controller); }
+
+        if (timer > 1.0f) { timer -= 1.0f; }
     }
+
+    //void TriggerHaptic(BaseInteractionEventArgs eventArgs)
+    //{
+    //    if (eventArgs.interactorObject is XRBaseControllerInteractor controllerInteractor)
+    //    {
+    //        TriggerHaptic(controllerInteractor.xrController);
+    //    }
+    //}
 
     void TriggerHaptic(XRBaseController controller)
     {
-        Debug.Log("Called second trigger active");
-
         if (intensity > 0)
         {
             controller.SendHapticImpulse(intensity, duration);
