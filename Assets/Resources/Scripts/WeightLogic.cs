@@ -6,37 +6,51 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class WeightLogic : MonoBehaviour
 {
     [SerializeField] GameObject armGO;
-    [SerializeField] XRSocketInteractor socket;
-    [SerializeField] float lerpTime = 0.2f;
-    float weight;
+    [SerializeField] List<XRSocketInteractor> weightSockets;
+
+    [SerializeField] float weight = 0.0f;
+    [SerializeField] float lerpSpeed = 0.2f;
+    [SerializeField] float weightSensitivity = 7;
 
     bool isLerping = false;
+    float elapsedTime = 0;
+
+    void OnEnterSocketFunction(SelectEnterEventArgs eventArgs)
+    {
+        isLerping = true;
+        elapsedTime = 0.0f;
+        weight += eventArgs.interactableObject.transform.gameObject.GetComponent<Rigidbody>().mass;
+        Debug.Log("Total weight is: " + weight.ToString());
+    }
+    void OnExitSocketFunction(SelectExitEventArgs eventArgs)
+    {
+        isLerping = true;
+        elapsedTime = 0.0f;
+        weight -= eventArgs.interactableObject.transform.gameObject.GetComponent<Rigidbody>().mass;
+        Debug.Log("Total weight is: " + weight.ToString());
+    }
 
     void Start()
     {
-        socket.selectEntered.AddListener((eventArgs) => 
+        foreach (XRSocketInteractor socket in weightSockets)
         {
-            isLerping = true;
-            elapsedTime = 0.0f;
-            weight = eventArgs.interactableObject.transform.gameObject.GetComponent<Rigidbody>().mass;
-        });
-        socket.selectExited.AddListener((eventArgs) => { armGO.transform.rotation = Quaternion.identity; });
+            socket.selectEntered.AddListener(OnEnterSocketFunction);
+            socket.selectExited.AddListener(OnExitSocketFunction);
+        }
+
+        armGO.transform.rotation = Quaternion.Euler(-Vector3.forward * weight * weightSensitivity);
     }
 
-    float elapsedTime = 0;
     void Update()
     {
         if (isLerping)
         {
-            elapsedTime += Time.deltaTime;
+            Quaternion targetRotation = Quaternion.Euler(-Vector3.forward * weight * weightSensitivity);
 
-            float t = elapsedTime / lerpTime;
+            elapsedTime += lerpSpeed * Time.deltaTime;
+            armGO.transform.rotation = Quaternion.Lerp(armGO.transform.rotation, targetRotation, elapsedTime);
 
-            float rotationSensitivity = 10;
-
-            armGO.transform.rotation = Quaternion.Lerp(Quaternion.identity, Quaternion.Euler(-Vector3.forward * weight * rotationSensitivity), elapsedTime);
-
-            if (elapsedTime >= lerpTime)
+            if (armGO.transform.rotation == targetRotation)
             {
                 isLerping = false;
             }
