@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RadioBehaviour : MonoBehaviour
 {
-    public double frequency;
-    public 
+    [SerializeField] public double frequency;
+    [SerializeField] GameObject dialController;
 
     // Start is called before the first frame update
     void Start()
