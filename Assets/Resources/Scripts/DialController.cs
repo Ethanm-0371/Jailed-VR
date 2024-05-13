@@ -8,7 +8,7 @@ public class DialController : MonoBehaviour
     [SerializeField] XRBaseController controller;
     [SerializeField] XRDirectInteractor controllerInteractor;
 
-    Vector3 startRotation;
+    [SerializeField] float snapAmount;
 
     void Start()
     {
@@ -23,13 +23,15 @@ public class DialController : MonoBehaviour
     {
         if (controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
         {
-            float newRotationX = rightHand.transform.rotation.eulerAngles.x;
+            float newRotationZ = rightHand.transform.rotation.eulerAngles.z;
+
+
             Vector3 rotationToSet = transform.rotation.eulerAngles;
-            rotationToSet.x = newRotationX;
+            rotationToSet.x = newRotationZ;
 
-            Debug.Log(rotationToSet);
+            //Debug.Log(rotationToSet);
 
-            transform.Rotate(rotationToSet);
+            transform.localRotation = ();
         }
     }
 }
