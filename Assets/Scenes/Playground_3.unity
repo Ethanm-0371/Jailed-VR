@@ -1200,8 +1200,8 @@ GameObject:
   - component: {fileID: 499929837}
   - component: {fileID: 499929836}
   - component: {fileID: 499929835}
-  - component: {fileID: 499929840}
   - component: {fileID: 499929842}
+  - component: {fileID: 499929840}
   - component: {fileID: 499929841}
   m_Layer: 0
   m_Name: Dial
@@ -1281,7 +1281,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499929833}
-  m_LocalRotation: {x: 0.031228, y: -0.031227995, z: 0.7064169, w: 0.7064169}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1.417, y: 0.525, z: -0.46501815}
   m_LocalScale: {x: 0.18543829, y: 0.03970447, z: 0.18543829}
   m_ConstrainProportionsScale: 0
@@ -1289,7 +1289,7 @@ Transform:
   - {fileID: 1278980958}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 5.062, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &499929840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,11 +1302,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e599a169e0bd41b4ba62e59cc7ef299f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRotationX: 0
+  startAngle: -70
   rightHand: {fileID: 994771471}
   controller: {fileID: 994771473}
   controllerInteractor: {fileID: 994771475}
-  snapAmount: 0
+  snapAngle: 5
 --- !u!114 &499929841
 MonoBehaviour:
   m_ObjectHideFlags: 0
