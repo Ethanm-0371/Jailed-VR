@@ -8,7 +8,7 @@ using System;
 public class NumpadController : MonoBehaviour
 {
     public List<int> correctPassword = new List<int>();
-    private List<int> inputPasswordList = new List<int>();
+    public List<int> inputPasswordList = new List<int>();
     [SerializeField] private TMP_Text codeDisplay;
     [SerializeField] private float resetTime = 2f;
     [SerializeField] private string successText;
@@ -16,13 +16,13 @@ public class NumpadController : MonoBehaviour
     [Header("Keypad Entry Events")]
     public UnityEvent onCorrectPassword;
     public UnityEvent onIncorrectPassword;
+    [SerializeField] public GameObject objectToTrigger;
 
-    public bool allowMultipleActivations = false;
     private bool hasUsedCorrectCode = false;
 
     public bool HasUsedCorrectCode { get { return hasUsedCorrectCode; } }
 
-    public void UserNumberEntry(int selectedNum)
+    public void AddEntry(int selectedNum)
     {
         if (inputPasswordList.Count >= 4)
             return;
@@ -30,54 +30,6 @@ public class NumpadController : MonoBehaviour
         inputPasswordList.Add(selectedNum);
 
         UpdateDisplay();
-
-        if (inputPasswordList.Count >= 4)
-            CheckPassword();
-    }
-
-    private void CheckPassword()
-    {
-        for (int i = 0; i < correctPassword.Count; i++)
-        {
-            if (inputPasswordList[i] != correctPassword[i])
-            {
-                IncorrectPassword();
-                return;
-            }
-        }
-
-        CorrectPasswordGiven();
-    }
-
-    private void CorrectPasswordGiven()
-    {
-        if (allowMultipleActivations)
-        {
-            onCorrectPassword.Invoke();
-            codeDisplay.text = successText;
-            StartCoroutine(ResetNumcode());
-        }
-        else if (!allowMultipleActivations && !hasUsedCorrectCode)
-        {
-            onCorrectPassword.Invoke();
-            hasUsedCorrectCode = true;
-            codeDisplay.text = successText;
-        }
-    }
-
-    private void IncorrectPassword()
-    {
-        onIncorrectPassword.Invoke();
-        StartCoroutine(ResetNumcode());
-    }
-
-    private void UpdateDisplay()
-    {
-        codeDisplay.text = null;
-        for (int i = 0; i < inputPasswordList[i]; i++)
-        {
-            codeDisplay.text += inputPasswordList[i];
-        }
     }
 
     public void DeleteEntry()
@@ -90,12 +42,46 @@ public class NumpadController : MonoBehaviour
         UpdateDisplay();
     }
 
-    IEnumerator ResetNumcode()
+    private void UpdateDisplay()
     {
-        yield return new WaitForSeconds(resetTime);
+        codeDisplay.text = null;
+        for (int i = 0; i < inputPasswordList[i]; i++)
+        {
+            codeDisplay.text += inputPasswordList[i];
+        }
+    }
 
-        inputPasswordList.Clear();
+    public void CheckPassword()
+    {
+        Debug.Log("Checking password.");
+        for (int i = 0; i < correctPassword.Count; i++)
+        {
+            if (inputPasswordList[i] != correctPassword[i])
+            {
+                IncorrectPassword();
+                return;
+            }
+        }
 
-        codeDisplay.text = "";
+        CorrectPassword();
+    }
+
+    private void CorrectPassword()
+    {
+        Debug.Log("Correct password given");
+        onCorrectPassword.Invoke();
+        codeDisplay.text = successText;
+        TriggerDoor();
+    }
+
+    private void IncorrectPassword()
+    {
+        Debug.Log("Incorrect password given");
+        onIncorrectPassword.Invoke();
+    }
+
+    public void TriggerDoor()
+    {
+        objectToTrigger.SetActive(false);
     }
 }
