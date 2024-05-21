@@ -38,10 +38,10 @@ public class DialController : MonoBehaviour
         {
             float angleToRotate = rightHand.transform.eulerAngles.z - firstHandRotation.eulerAngles.z;
 
+            float snappedAngle = Mathf.Round(angleToRotate / snapAngle) * snapAngle;
 
             transform.localRotation = initialDialRotation;
-            transform.Rotate(Vector3.up * angleToRotate);
-
+            transform.Rotate(Vector3.up * snappedAngle);
         }
     }
 }
