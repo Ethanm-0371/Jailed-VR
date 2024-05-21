@@ -16,21 +16,32 @@ public class DialController : MonoBehaviour
     /// </summary>
     [SerializeField] float snapAngle;
 
+    Quaternion firstHandRotation;
+    Quaternion initialDialRotation;
+
     void Start()
     {
         transform.Rotate(Vector3.up * (startAngle * -1));
+
+        GetComponent<XRGrabInteractable>().selectEntered.AddListener(args =>
+        {
+            firstHandRotation = rightHand.transform.rotation;
+            initialDialRotation = transform.rotation;
+        });
     }
 
     // Update is called once per frame
     void Update()
     {
         // Test
-        Quaternion currentRotation = transform.localRotation;
-
         if (controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
         {
-            transform.localRotation = currentRotation;
-            transform.Rotate(Vector3.up * rightHand.transform.eulerAngles.z);
+            float angleToRotate = rightHand.transform.eulerAngles.z - firstHandRotation.eulerAngles.z;
+
+
+            transform.localRotation = initialDialRotation;
+            transform.Rotate(Vector3.up * angleToRotate);
+
         }
     }
 }
