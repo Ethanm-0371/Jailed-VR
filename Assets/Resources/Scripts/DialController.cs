@@ -3,18 +3,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class DialController : MonoBehaviour
 {
-    /// <summary>
-    /// Dial starting angle
-    /// </summary>
-    [SerializeField] float startAngle;
     [SerializeField] GameObject rightHand;
+    [SerializeField] RadioBehaviour radio;
     [SerializeField] XRBaseController controller;
     [SerializeField] XRDirectInteractor controllerInteractor;
 
-    /// <summary>
-    /// Angle difference needed in order to change dial rotation
-    /// </summary>
     [SerializeField] float snapAngle;
+    [SerializeField] float startAngle;
+    [SerializeField] float rotationScale;
 
     Quaternion firstHandRotation;
     Quaternion initialDialRotation;
@@ -36,12 +32,27 @@ public class DialController : MonoBehaviour
         // Test
         if (controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
         {
-            float angleToRotate = rightHand.transform.eulerAngles.z - firstHandRotation.eulerAngles.z;
+            float lastAngle = transform.rotation.eulerAngles.z;
+
+            float angleToRotate = (rightHand.transform.eulerAngles.z - firstHandRotation.eulerAngles.z) * rotationScale;
 
             float snappedAngle = Mathf.Round(angleToRotate / snapAngle) * snapAngle;
 
             transform.localRotation = initialDialRotation;
             transform.Rotate(Vector3.up * snappedAngle);
+
+            float currentAngle = transform.rotation.eulerAngles.z;
+
+            if (currentAngle < lastAngle)
+            {
+                radio.TakeFrequency();
+            }
+            else if (currentAngle > lastAngle)
+            {
+                radio.AddFrequency();
+            }
+
+            // ADD VIBRATION
         }
     }
 }
