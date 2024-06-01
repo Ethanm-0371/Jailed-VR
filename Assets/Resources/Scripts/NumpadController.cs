@@ -10,7 +10,6 @@ public class NumpadController : MonoBehaviour
     public List<int> correctPassword = new List<int>();
     public List<int> inputPasswordList = new List<int>();
     [SerializeField] private TMP_Text codeDisplay;
-    [SerializeField] private float resetTime = 2f;
     [SerializeField] private string successText;
     [Space(5f)]
     [Header("Keypad Entry Events")]
