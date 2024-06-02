@@ -58,7 +58,7 @@ public class NumpadController : MonoBehaviour
     private void UpdateDisplay()
     {
         codeDisplay.text = null;
-        for (int i = 0; i < inputPasswordList[i]; i++)
+        for (int i = 0; i < inputPasswordList.Count; i++)
         {
             codeDisplay.text += inputPasswordList[i];
         }
@@ -68,7 +68,7 @@ public class NumpadController : MonoBehaviour
     {
         Debug.Log("Checking password.");
 
-        if (inputPasswordList.Count >= 4)
+        if (inputPasswordList.Count > 4)
             return;
 
         for (int i = 0; i < correctPassword.Count; i++)

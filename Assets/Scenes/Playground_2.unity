@@ -745,7 +745,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &140856502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &232826624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &364077864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3420,6 +3420,67 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1001 &897795872
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029278877901146157, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525099797156972312, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
+      propertyPath: m_Name
+      value: BGM_GameObject
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf3088794dd686c4f8229a261ae20efb, type: 3}
 --- !u!1 &898114087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,7 +3792,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &935559624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4494,7 +4555,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &1092089539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5249,7 +5310,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &1231247410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6503,7 +6564,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &1398248497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6806,7 +6867,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &1441846362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7840,9 +7901,9 @@ MonoBehaviour:
   m_PokeFollowTransform: {fileID: 898114094}
   m_SmoothingSpeed: 16
   m_ReturnToInitialPosition: 1
-  m_ApplyIfChildIsTarget: 1
+  m_ApplyIfChildIsTarget: 0
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &1767828261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8513,7 +8574,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &1911013113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9008,7 +9069,7 @@ MonoBehaviour:
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
   m_ClampToMaxDistance: 1
-  m_MaxDistance: 0.045
+  m_MaxDistance: -0.045
 --- !u!114 &2020505622
 MonoBehaviour:
   m_ObjectHideFlags: 0
