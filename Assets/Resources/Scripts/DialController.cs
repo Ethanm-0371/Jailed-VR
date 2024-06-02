@@ -15,14 +15,24 @@ public class DialController : MonoBehaviour
     Quaternion firstHandRotation;
     Quaternion initialDialRotation;
 
+    float snappedAngle;
+    float lastSnap;
+
     void Start()
     {
         transform.Rotate(Vector3.up * (startAngle * -1));
+
+        lastSnap = startAngle;
 
         GetComponent<XRGrabInteractable>().selectEntered.AddListener(args =>
         {
             firstHandRotation = rightHand.transform.rotation;
             initialDialRotation = transform.rotation;
+        });
+
+        GetComponent<XRGrabInteractable>().selectExited.AddListener(args =>
+        {
+            lastSnap = snappedAngle;
         });
     }
 
@@ -32,25 +42,18 @@ public class DialController : MonoBehaviour
         // Test
         if (controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
         {
-            float lastAngle = transform.rotation.eulerAngles.z;
+            float angleToRotate = Mathf.DeltaAngle(firstHandRotation.eulerAngles.z, rightHand.transform.eulerAngles.z) * rotationScale;
 
-            float angleToRotate = (rightHand.transform.eulerAngles.z - firstHandRotation.eulerAngles.z) * rotationScale;
+            snappedAngle = Mathf.Round(angleToRotate / snapAngle) * snapAngle;
 
-            float snappedAngle = Mathf.Round(angleToRotate / snapAngle) * snapAngle;
-
-            transform.localRotation = initialDialRotation;
-            transform.Rotate(Vector3.up * snappedAngle);
-
-            float currentAngle = transform.rotation.eulerAngles.z;
-
-            if (currentAngle < lastAngle)
+            if (lastSnap != snappedAngle)
             {
-                radio.TakeFrequency();
+                transform.localRotation = initialDialRotation;
+                transform.Rotate(Vector3.up * snappedAngle);
+
+                radio.CalculateFrequency(lastSnap + snappedAngle);
             }
-            else if (currentAngle > lastAngle)
-            {
-                radio.AddFrequency();
-            }
+
 
             // ADD VIBRATION
         }

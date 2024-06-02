@@ -1,3 +1,4 @@
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class RadioBehaviour : MonoBehaviour
@@ -29,12 +30,12 @@ public class RadioBehaviour : MonoBehaviour
         switch (frequency)
         {
             // Hours
-            case 110:
+            case 150:
                 changeMaterial.To(1);
                 changeAudio.To(1);
                 break;
             // Minute Dec
-            case 150:
+            case 70:
                 changeMaterial.To(2);
                 changeAudio.To(2);
                 break;
@@ -75,29 +76,37 @@ public class RadioBehaviour : MonoBehaviour
         }
     }
 
-    public void AddFrequency()
+    public void CalculateFrequency(float currentAngle)
     {
-        if (frequency > 240)
+        if (currentAngle < 120 && currentAngle > -130)
         {
-            frequency = 240;
-            return;
+            frequency = -(int)(currentAngle) + 120;
         }
-
-        frequency += 10;
-    }
-    public void TakeFrequency()
-    {
-        if (frequency < 0)
-        {
-            frequency = 0;
-            return;
-        }
-
-        frequency -= 10;
     }
 
-    public int GetFrequency()
-    {
-        return frequency;
-    }
+    //public void AddFrequency()
+    //{
+    //    if (frequency > 240)
+    //    {
+    //        frequency = 240;
+    //        return;
+    //    }
+
+    //    frequency += 10;
+    //}
+    //public void TakeFrequency()
+    //{
+    //    if (frequency < 0)
+    //    {
+    //        frequency = 0;
+    //        return;
+    //    }
+
+    //    frequency -= 10;
+    //}
+
+    //public int GetFrequency()
+    //{
+    //    return frequency;
+    //}
 }

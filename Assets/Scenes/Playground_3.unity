@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aeb8f827bb68bb429ffb754f7629cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingFrequency: 0
+  startingFrequency: 130
   frequency: 0
   changeAudio: {fileID: 1608173597}
   dialController: {fileID: 499929840}
@@ -1462,9 +1462,9 @@ MonoBehaviour:
   radio: {fileID: 419220160}
   controller: {fileID: 994771473}
   controllerInteractor: {fileID: 994771475}
-  snapAngle: 15
-  startAngle: -70
-  rotationScale: 2
+  snapAngle: 10
+  startAngle: 10
+  rotationScale: 1
 --- !u!114 &499929841
 MonoBehaviour:
   m_ObjectHideFlags: 0
