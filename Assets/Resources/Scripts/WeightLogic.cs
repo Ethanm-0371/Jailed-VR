@@ -8,7 +8,7 @@ public class WeightLogic : MonoBehaviour
     [SerializeField] GameObject armGO;
     [SerializeField] List<XRSocketInteractor> weightSockets;
 
-    [SerializeField] float weight = 0.0f;
+    public float weight = 0.0f;
     [SerializeField] float lerpSpeed = 0.2f;
     [SerializeField] float weightSensitivity = 7;
 
@@ -38,7 +38,7 @@ public class WeightLogic : MonoBehaviour
             socket.selectExited.AddListener(OnExitSocketFunction);
         }
 
-        armGO.transform.rotation = Quaternion.Euler(-Vector3.forward * weight * weightSensitivity);
+        armGO.transform.localRotation = Quaternion.Euler(-Vector3.forward * weight * weightSensitivity);
     }
 
     void Update()
@@ -48,9 +48,9 @@ public class WeightLogic : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(-Vector3.forward * weight * weightSensitivity);
 
             elapsedTime += lerpSpeed * Time.deltaTime;
-            armGO.transform.rotation = Quaternion.Lerp(armGO.transform.rotation, targetRotation, elapsedTime);
+            armGO.transform.localRotation = Quaternion.Lerp(armGO.transform.localRotation, targetRotation, elapsedTime);
 
-            if (armGO.transform.rotation == targetRotation)
+            if (armGO.transform.localRotation == targetRotation)
             {
                 isLerping = false;
             }
