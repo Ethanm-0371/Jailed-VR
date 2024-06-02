@@ -7,12 +7,16 @@ public class ManagerPuzzle1 : MonoBehaviour
 {
     bool heartReleased = false;
     [SerializeField] WeightLogic scale;
+    [SerializeField] CryptexLogic cryptex;
 
     [SerializeField] GameObject heart;
+    [SerializeField] GameObject key;
 
     void Update()
     {
         if (!heartReleased && scale.weight == 0) { ReleaseHeart(); }
+
+        if (cryptex.solved) { ReleaseKey(); }
     }
 
     float counter = 0.0f;
@@ -38,5 +42,11 @@ public class ManagerPuzzle1 : MonoBehaviour
 
             scale.enabled = false;
         }
+    }
+
+    void ReleaseKey()
+    {
+        key.GetComponent<Rigidbody>().isKinematic = false;
+        key.GetComponent<Rigidbody>().useGravity = true;
     }
 }
