@@ -12,11 +12,15 @@ public class DialController : MonoBehaviour
     [SerializeField] float startAngle;
     [SerializeField] float rotationScale;
 
+    [SerializeField] float vibStrength;
+    [SerializeField] float vibDuration;
+
     Quaternion firstHandRotation;
     Quaternion initialDialRotation;
 
     float snappedAngle;
     float lastSnap;
+    float lastSnapVibration;
 
     void Start()
     {
@@ -46,16 +50,17 @@ public class DialController : MonoBehaviour
 
             snappedAngle = Mathf.Round(angleToRotate / snapAngle) * snapAngle;
 
-            if (lastSnap != snappedAngle)
+            if (lastSnapVibration != snappedAngle)
             {
                 transform.localRotation = initialDialRotation;
                 transform.Rotate(Vector3.up * snappedAngle);
 
+                controller.SendHapticImpulse(vibStrength, vibDuration);
+
                 radio.CalculateFrequency(lastSnap + snappedAngle);
+                
+                lastSnapVibration = snappedAngle;
             }
-
-
-            // ADD VIBRATION
         }
     }
 }

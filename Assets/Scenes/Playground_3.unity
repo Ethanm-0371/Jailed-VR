@@ -1550,6 +1550,8 @@ MonoBehaviour:
   snapAngle: 10
   startAngle: 10
   rotationScale: 1
+  vibStrength: 0.03
+  vibDuration: 0.01
 --- !u!114 &499929841
 MonoBehaviour:
   m_ObjectHideFlags: 0
