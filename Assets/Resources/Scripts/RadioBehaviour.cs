@@ -1,4 +1,4 @@
-using Unity.PlasticSCM.Editor.WebApi;
+using TMPro;
 using UnityEngine;
 
 public class RadioBehaviour : MonoBehaviour
@@ -8,7 +8,7 @@ public class RadioBehaviour : MonoBehaviour
     [SerializeField] ChangeAudio changeAudio;
     [SerializeField] DialController dialController;
     [SerializeField] ChangeMaterial changeMaterial;
-
+    [SerializeField] TextMeshPro freqText;
 
     bool easter1;
     bool easter2;
@@ -26,6 +26,12 @@ public class RadioBehaviour : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        ImageAndSound();
+        PrintFrequency();
+    }
+
+    void ImageAndSound()
     {
         switch (frequency)
         {
@@ -76,6 +82,11 @@ public class RadioBehaviour : MonoBehaviour
         }
     }
 
+    void PrintFrequency()
+    {
+        freqText.text = frequency.ToString();
+    }
+
     public void CalculateFrequency(float currentAngle)
     {
         if (currentAngle < 120 && currentAngle > -130)
@@ -83,30 +94,4 @@ public class RadioBehaviour : MonoBehaviour
             frequency = -(int)(currentAngle) + 120;
         }
     }
-
-    //public void AddFrequency()
-    //{
-    //    if (frequency > 240)
-    //    {
-    //        frequency = 240;
-    //        return;
-    //    }
-
-    //    frequency += 10;
-    //}
-    //public void TakeFrequency()
-    //{
-    //    if (frequency < 0)
-    //    {
-    //        frequency = 0;
-    //        return;
-    //    }
-
-    //    frequency -= 10;
-    //}
-
-    //public int GetFrequency()
-    //{
-    //    return frequency;
-    //}
 }
