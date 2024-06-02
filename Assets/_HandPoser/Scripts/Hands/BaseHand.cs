@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class BaseHand : MonoBehaviour
 {
     // Neutral pose for the hand
-    [SerializeField] protected Pose defaultPose = null;
+    [SerializeField] public Pose defaultPose = null;
 
     // Serialized so it can be used in editor by the preview hand
     [SerializeField] protected List<Transform> fingerRoots = new List<Transform>();

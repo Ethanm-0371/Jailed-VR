@@ -5,12 +5,18 @@ public class GameplayHand : BaseHand
 {
     // The interactor we react to
     [SerializeField] private XRBaseInteractor targetInteractor = null;
+    public bool isGrabbing = false;
+
+    MeshCollider meshCollider;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
 
     private void OnEnable()
     {
         // Subscribe to selected events
         targetInteractor.onSelectEntered.AddListener(TryApplyObjectPose);
         targetInteractor.onSelectExited.AddListener(TryApplyDefaultPose);
+
+        meshCollider = GetComponent<MeshCollider>();
     }
 
     private void OnDisable()
@@ -18,20 +24,28 @@ public class GameplayHand : BaseHand
         // Unsubscribe to selected events
         targetInteractor.onSelectEntered.RemoveListener(TryApplyObjectPose);
         targetInteractor.onSelectExited.RemoveListener(TryApplyDefaultPose);
+
+        meshCollider = null;
     }
 
     private void TryApplyObjectPose(XRBaseInteractable interactable)
     {
         // Try and get pose container, and apply
         if (interactable.TryGetComponent(out PoseContainer poseContainer))
+        {
+            isGrabbing = true;
             ApplyPose(poseContainer.pose);
+        }
     }
 
     private void TryApplyDefaultPose(XRBaseInteractable interactable)
     {
         // Try and get pose container, and apply
         if (interactable.TryGetComponent(out PoseContainer poseContainer))
+        {
+            isGrabbing = false;
             ApplyDefaultPose();
+        }
     }
 
     public override void ApplyOffset(Vector3 position, Quaternion rotation)
@@ -53,5 +67,14 @@ public class GameplayHand : BaseHand
         // Let's have this done automatically, but not hide the requirement
         if (!targetInteractor)
             targetInteractor = GetComponentInParent<XRBaseInteractor>();
+    }
+
+    public void DeformCollider()
+    {
+        Mesh targetMesh = new Mesh();
+        meshRenderer.BakeMesh(targetMesh);
+
+        meshCollider.sharedMesh = null;
+        meshCollider.sharedMesh = targetMesh;
     }
 }
