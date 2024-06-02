@@ -16,13 +16,25 @@ public class NumpadController : MonoBehaviour
     public UnityEvent onCorrectPassword;
     public UnityEvent onIncorrectPassword;
     [SerializeField] public GameObject objectToTrigger;
+    [Header("AudioClips")]
+    public AudioClip buttonSfx;
+    public AudioClip correctSfx;
+    public AudioClip incorrectSfx;
+    private AudioSource audioSource;
 
     private bool hasUsedCorrectCode = false;
 
     public bool HasUsedCorrectCode { get { return hasUsedCorrectCode; } }
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void AddEntry(int selectedNum)
     {
+        audioSource.PlayOneShot(buttonSfx);
+        
         if (inputPasswordList.Count >= 4)
             return;
 
@@ -33,6 +45,8 @@ public class NumpadController : MonoBehaviour
 
     public void DeleteEntry()
     {
+        audioSource.PlayOneShot(buttonSfx);
+
         if (inputPasswordList.Count <= 0)
             return;
 
@@ -44,7 +58,7 @@ public class NumpadController : MonoBehaviour
     private void UpdateDisplay()
     {
         codeDisplay.text = null;
-        for (int i = 0; i < inputPasswordList[i]; i++)
+        for (int i = 0; i < inputPasswordList.Count; i++)
         {
             codeDisplay.text += inputPasswordList[i];
         }
@@ -53,6 +67,10 @@ public class NumpadController : MonoBehaviour
     public void CheckPassword()
     {
         Debug.Log("Checking password.");
+
+        if (inputPasswordList.Count > 4)
+            return;
+
         for (int i = 0; i < correctPassword.Count; i++)
         {
             if (inputPasswordList[i] != correctPassword[i])
@@ -68,6 +86,7 @@ public class NumpadController : MonoBehaviour
     private void CorrectPassword()
     {
         Debug.Log("Correct password given");
+        audioSource.PlayOneShot(correctSfx);
         onCorrectPassword.Invoke();
         codeDisplay.text = successText;
         TriggerDoor();
@@ -76,6 +95,7 @@ public class NumpadController : MonoBehaviour
     private void IncorrectPassword()
     {
         Debug.Log("Incorrect password given");
+        audioSource.PlayOneShot(incorrectSfx);
         onIncorrectPassword.Invoke();
     }
 
