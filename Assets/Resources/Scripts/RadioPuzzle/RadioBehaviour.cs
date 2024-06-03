@@ -5,7 +5,6 @@ public class RadioBehaviour : MonoBehaviour
 {
     [SerializeField] int startingFrequency;
     [SerializeField] ChangeAudio changeAudio;
-    [SerializeField] DialController dialController;
     [SerializeField] ChangeMaterial changeMaterial;
     [SerializeField] TextMeshPro freqText;
 
