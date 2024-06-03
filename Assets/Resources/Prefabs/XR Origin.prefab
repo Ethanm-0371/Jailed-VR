@@ -1076,6 +1076,7 @@ GameObject:
   - component: {fileID: 1463868733632755994}
   - component: {fileID: 8841099889436097204}
   - component: {fileID: 8097302881544903328}
+  - component: {fileID: 5973948343840935594}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1097,7 +1098,7 @@ Transform:
   m_Children:
   - {fileID: 1026798206304477702}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5757458276434218545
 MonoBehaviour:
@@ -1294,6 +1295,32 @@ MonoBehaviour:
   rightHand: {fileID: 8286075736390786355}
   pointPose: {fileID: 11400000, guid: e5b3793e7130258499c2969383e6cea5, type: 2}
   pokeInteractor: {fileID: 8266036213433085159}
+--- !u!143 &5973948343840935594
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454723437525385553}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 0
+  m_Radius: 0.2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &4482605545642295279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,10 +1801,10 @@ MonoBehaviour:
   m_DirectionalAnchorRotationAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Directional Anchor Rotation
       m_Type: 0
       m_ExpectedControlType: 
-      m_Id: 
+      m_Id: 3fac66d4-2a44-4805-8f27-5c4e67b592d5
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
