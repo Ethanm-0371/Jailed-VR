@@ -6,6 +6,7 @@ public class ClockManager : MonoBehaviour
 {
     [SerializeField] GameObject MinuteBar;
     [SerializeField] GameObject HourBar;
+    [SerializeField] Puzzle3Safebox safebox;
 
     private void Update()
     {
@@ -14,7 +15,7 @@ public class ClockManager : MonoBehaviour
 
         if (HourTime == 5 && MinuteTime == 30)
         {
-            // SPAWN KEY AND OPEN CRATE
+            safebox.OpenSafebox();
         }
 
     }
