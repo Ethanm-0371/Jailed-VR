@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - NumpadDisplay
+  - Weights
   layers:
   - Default
   - TransparentFX

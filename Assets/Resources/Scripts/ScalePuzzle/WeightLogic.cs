@@ -22,6 +22,12 @@ public class WeightLogic : MonoBehaviour
 
     void OnEnterSocketFunction(SelectEnterEventArgs eventArgs)
     {
+        if (eventArgs.interactableObject.transform.tag != "Weights") 
+        {
+            XRSocketInteractor thang = eventArgs.interactorObject as XRSocketInteractor;
+            thang.interactionManager.SelectExit(eventArgs.interactorObject, eventArgs.interactableObject);
+        }
+
         isLerping = true;
         elapsedTime = 0.0f;
         weight += eventArgs.interactableObject.transform.gameObject.GetComponent<Rigidbody>().mass;
