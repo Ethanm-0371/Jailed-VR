@@ -10,6 +10,24 @@ public class VibrationTest : MonoBehaviour
     [SerializeField] XRBaseController controller;
     [SerializeField] XRDirectInteractor controllerInteractor;
 
+    private void Start()
+    {
+        GetComponent<XRGrabInteractable>().selectEntered.AddListener(OnSelectEntered);
+        GetComponent<XRGrabInteractable>().selectExited.AddListener(OnSelectExited);
+    }
+
+    private void OnSelectEntered(SelectEnterEventArgs args)
+    {
+        controller = args.interactorObject.transform.gameObject.GetComponent<XRBaseController>();
+        controllerInteractor = args.interactorObject.transform.gameObject.GetComponent<XRDirectInteractor>();
+    }
+
+    private void OnSelectExited(SelectExitEventArgs args)
+    {
+        controller = null;
+        controllerInteractor = null;
+    }
+
     float timer = 0.0f;
     private void Update()
     {
