@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ClockManager : MonoBehaviour
 {
-    [SerializeField] GameObject bigBar;
-    [SerializeField] GameObject smallBar;
+    [SerializeField] GameObject MinuteBar;
+    [SerializeField] GameObject HourBar;
 
     private void Update()
     {
-        float bigBarTime = Mathf.Round(bigBar.transform.localEulerAngles.z / 6);
-        float smallBarTime = Mathf.Round(smallBar.transform.localEulerAngles.z / 360 * 12);
+        float MinuteTime = Mathf.Round(MinuteBar.transform.localEulerAngles.z / 6);
+        float HourTime = Mathf.Round(HourBar.transform.localEulerAngles.z / 360 * 12);
+
+        if (HourTime == 5 && MinuteTime == 30)
+        {
+            // SPAWN KEY AND OPEN CRATE
+        }
+
     }
 }

@@ -16,7 +16,7 @@ public class ClockHand : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         if (!controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
         {
             body.useGravity = false;
