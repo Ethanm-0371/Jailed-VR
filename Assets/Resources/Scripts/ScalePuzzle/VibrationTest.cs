@@ -7,8 +7,8 @@ public class VibrationTest : MonoBehaviour
     public float intensity;
     public float duration;
 
-    [SerializeField] XRBaseController controller;
-    [SerializeField] XRDirectInteractor controllerInteractor;
+    XRBaseController controller;
+    XRDirectInteractor controllerInteractor;
 
     private void Start()
     {

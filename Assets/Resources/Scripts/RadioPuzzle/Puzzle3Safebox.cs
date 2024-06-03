@@ -25,7 +25,7 @@ public class Puzzle3Safebox : MonoBehaviour
         {
             foreach (var GO in objectsToRotate)
             {
-                GO.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(angleToRotate, 90, 0), currentTime);
+                GO.transform.localRotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(angleToRotate, 0, 0), currentTime);
             }
 
             currentTime += Time.deltaTime;

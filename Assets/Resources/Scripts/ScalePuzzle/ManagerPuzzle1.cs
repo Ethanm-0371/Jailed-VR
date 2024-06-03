@@ -6,17 +6,17 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ManagerPuzzle1 : MonoBehaviour
 {
     bool heartReleased = false;
+    bool keyReleased = false;
     [SerializeField] WeightLogic scale;
     [SerializeField] CryptexLogic cryptex;
 
     [SerializeField] GameObject heart;
-    [SerializeField] GameObject key;
 
     void Update()
     {
         if (!heartReleased && Mathf.Abs(scale.weight) < 0.01) { ReleaseHeart(); }
 
-        if (cryptex.solved) { ReleaseKey(); }
+        if (cryptex.solved && !keyReleased) { ReleaseKey(); }
     }
 
     float counter = 0.0f;
@@ -47,7 +47,7 @@ public class ManagerPuzzle1 : MonoBehaviour
 
     void ReleaseKey()
     {
-        key.GetComponent<Rigidbody>().isKinematic = false;
-        key.GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Puzzle3Safebox>().OpenSafebox();
+        keyReleased = true;
     }
 }
