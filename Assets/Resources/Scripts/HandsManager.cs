@@ -7,9 +7,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class HandsManager : MonoBehaviour
 {
     ControllerManager controllerManager;
+
     [SerializeField] GameplayHand rightHand;
+    [SerializeField] GameplayHand leftHand;
+
     [SerializeField] Pose pointPose;
-    [SerializeField] XRPokeInteractor pokeInteractor;
 
     void Start()
     {
@@ -18,23 +20,29 @@ public class HandsManager : MonoBehaviour
 
     void Update()
     {
-        if (controllerManager.rightController.TryGetFeatureValue(CommonUsages.gripButton, out bool gripPressed))
+        UpdateHand(controllerManager.rightController, rightHand);
+        UpdateHand(controllerManager.leftController, leftHand);
+    }
+
+    void UpdateHand(InputDevice controller, GameplayHand hand)
+    {
+        if (controller.TryGetFeatureValue(CommonUsages.gripButton, out bool gripPressed))
         {
-            if (!rightHand.isGrabbing)
+            if (!hand.isGrabbing)
             {
                 if (gripPressed)
                 {
-                    rightHand.transform.parent.GetComponent<SphereCollider>().enabled = false;
-                    rightHand.ApplyPose(pointPose);
-                    rightHand.DeformCollider();
-                    pokeInteractor.enabled = true;
+                    hand.transform.parent.GetComponent<SphereCollider>().enabled = false;
+                    hand.ApplyPose(pointPose);
+                    hand.DeformCollider();
+                    hand.transform.GetComponent<XRPokeInteractor>().enabled = true;
                 }
                 else
                 {
-                    rightHand.transform.parent.GetComponent<SphereCollider>().enabled = true;
-                    rightHand.ApplyDefaultPose();
-                    rightHand.DeformCollider();
-                    pokeInteractor.enabled = false;
+                    hand.transform.parent.GetComponent<SphereCollider>().enabled = true;
+                    hand.ApplyDefaultPose();
+                    hand.DeformCollider();
+                    hand.transform.GetComponent<XRPokeInteractor>().enabled = false;
                 }
             }
         }

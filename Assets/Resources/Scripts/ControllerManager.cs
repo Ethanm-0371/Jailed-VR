@@ -24,7 +24,7 @@ public class ControllerManager : MonoBehaviour
         }
         if (!leftController.isValid)
         {
-            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref rightController);
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref leftController);
         }
     }
 
