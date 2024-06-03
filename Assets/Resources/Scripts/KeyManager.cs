@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class KeyManager : MonoBehaviour
 {
-    //BronzeKeyChecker bronzeKey;
     [SerializeField] SilverKeyChecker silverKey;
     [SerializeField] GoldKeyChecker goldKey;
     [SerializeField] BronzeKeyChecker bronzeKey;

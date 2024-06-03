@@ -1828,14 +1828,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Statue
       objectReference: {fileID: 0}
-    - target: {fileID: 1816293459222489722, guid: c7e13f9a8e0d81a48b1103b3ad7711b0, type: 3}
-      propertyPath: Priority
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 2362852064603913969, guid: c7e13f9a8e0d81a48b1103b3ad7711b0, type: 3}
-      propertyPath: medalSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: e4998266315b7f743aeccc899256c2aa, type: 3}
     - target: {fileID: 2362852064603913969, guid: c7e13f9a8e0d81a48b1103b3ad7711b0, type: 3}
       propertyPath: objectToTrigger
       value: 
