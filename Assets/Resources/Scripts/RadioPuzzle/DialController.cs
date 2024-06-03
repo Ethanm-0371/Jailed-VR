@@ -7,24 +7,35 @@ public class DialController : MonoBehaviour
     [SerializeField] RadioBehaviour radio;
     [SerializeField] XRBaseController controller;
     [SerializeField] XRDirectInteractor controllerInteractor;
-
-    [SerializeField] float snapAngle;
-    [SerializeField] float startAngle;
+    
     [SerializeField] float rotationScale;
 
-    [SerializeField] float vibStrength;
-    [SerializeField] float vibDuration;
+    float snapAngle;
+    float startAngle;
+    
+    float snappedAngle;
+
+    float vibStrength;
+    float vibDuration;
+
+    float lastSnap;
+    float lastSnapVibration;
 
     Quaternion firstHandRotation;
     Quaternion initialDialRotation;
 
-    float snappedAngle;
-    float lastSnap;
-    float lastSnapVibration;
 
     void Start()
     {
         transform.Rotate(Vector3.up * (startAngle * -1));
+
+        snapAngle = 10;
+        startAngle = 0;
+
+        snappedAngle = 0;
+
+        vibStrength = 0.03f;
+        vibDuration = 0.01f;
 
         lastSnap = startAngle;
 
@@ -53,7 +64,7 @@ public class DialController : MonoBehaviour
             if (lastSnapVibration != snappedAngle)
             {
                 transform.localRotation = initialDialRotation;
-                transform.Rotate(Vector3.up * snappedAngle);
+                transform.Rotate(Vector3.forward * -snappedAngle);
 
                 controller.SendHapticImpulse(vibStrength, vibDuration);
 
