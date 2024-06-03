@@ -849,7 +849,7 @@ Transform:
   m_Children:
   - {fileID: 1026798206304477702}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5757458276434218545
 MonoBehaviour:
@@ -1124,7 +1124,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 6271573414225017425, guid: 1c47f0ad0a292444fb62e9e6601c1568, type: 3}
+  - {fileID: 2100000, guid: 95f17e5a226441343a7004fe37fc9495, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2450,6 +2450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4838744783971455498}
     m_Modifications:
+    - target: {fileID: 625074668763816568, guid: f6075462e6fad0f45abef7762c615b28, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 95f17e5a226441343a7004fe37fc9495, type: 2}
     - target: {fileID: 986472585434496775, guid: f6075462e6fad0f45abef7762c615b28, type: 3}
       propertyPath: meshRenderer
       value: 
