@@ -14,7 +14,7 @@ public class ManagerPuzzle1 : MonoBehaviour
 
     void Update()
     {
-        if (!heartReleased && scale.weight == 0) { ReleaseHeart(); }
+        if (!heartReleased && Mathf.Abs(scale.weight) < 0.01) { ReleaseHeart(); }
 
         if (cryptex.solved) { ReleaseKey(); }
     }
@@ -37,6 +37,7 @@ public class ManagerPuzzle1 : MonoBehaviour
 
             heart.GetComponent<XRGrabInteractable>().enabled = true;
             heart.GetComponent<VibrationTest>().enabled = true;
+            heart.GetComponent<PoseContainer>().enabled = true;
 
             rb.AddForce(Vector3.up * releaseStrength);
 
