@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4887771394844588927}
   m_Layer: 0
   m_Name: Weight25
-  m_TagString: Untagged
+  m_TagString: Weights
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
