@@ -132,21 +132,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Flashlight
       objectReference: {fileID: 0}
+    - target: {fileID: 1263138859533849808, guid: 6aa963ce0606cb2419c263935cf178f7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1930991686099504746, guid: 6aa963ce0606cb2419c263935cf178f7, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1930991686099504746, guid: 6aa963ce0606cb2419c263935cf178f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.008024907
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1930991686099504746, guid: 6aa963ce0606cb2419c263935cf178f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6116739
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1930991686099504746, guid: 6aa963ce0606cb2419c263935cf178f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.9996204
+      value: 0.49
       objectReference: {fileID: 0}
     - target: {fileID: 1930991686099504746, guid: 6aa963ce0606cb2419c263935cf178f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1824,6 +1828,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Statue
       objectReference: {fileID: 0}
+    - target: {fileID: 1816293459222489722, guid: c7e13f9a8e0d81a48b1103b3ad7711b0, type: 3}
+      propertyPath: Priority
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362852064603913969, guid: c7e13f9a8e0d81a48b1103b3ad7711b0, type: 3}
+      propertyPath: medalSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: e4998266315b7f743aeccc899256c2aa, type: 3}
     - target: {fileID: 2362852064603913969, guid: c7e13f9a8e0d81a48b1103b3ad7711b0, type: 3}
       propertyPath: objectToTrigger
       value: 
