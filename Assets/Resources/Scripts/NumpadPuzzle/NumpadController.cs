@@ -16,6 +16,7 @@ public class NumpadController : MonoBehaviour
     public UnityEvent onCorrectPassword;
     public UnityEvent onIncorrectPassword;
     [SerializeField] public GameObject objectToTrigger;
+    [SerializeField] private GameObject key;
     [Header("AudioClips")]
     public AudioClip buttonSfx;
     public AudioClip correctSfx;
@@ -101,6 +102,9 @@ public class NumpadController : MonoBehaviour
 
     public void TriggerDoor()
     {
-        objectToTrigger.SetActive(false);
+        Quaternion rotation = Quaternion.Euler(-130, 0, 0);
+        objectToTrigger.transform.rotation = rotation;
+        key.SetActive(true);
+
     }
 }

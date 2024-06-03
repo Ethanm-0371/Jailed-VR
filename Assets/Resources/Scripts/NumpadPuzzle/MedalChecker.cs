@@ -29,7 +29,7 @@ public class MedalChecker : MonoBehaviour
     void OnSelectEntered(SelectEnterEventArgs args)
     {
         Debug.Log("Object entered socket: " + args.interactableObject.transform.name);
-        if (args.interactableObject.transform.name != "Medal")
+        if (args.interactableObject.transform.name != "SM_Medalion")
         {
             medalInteractor.interactionManager.SelectExit(medalInteractor, medalInteractor.selectTarget);
         }

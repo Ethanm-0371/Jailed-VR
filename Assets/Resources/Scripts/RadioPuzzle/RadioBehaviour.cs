@@ -4,11 +4,11 @@ using UnityEngine;
 public class RadioBehaviour : MonoBehaviour
 {
     [SerializeField] int startingFrequency;
-    [SerializeField] int frequency;
     [SerializeField] ChangeAudio changeAudio;
-    [SerializeField] DialController dialController;
     [SerializeField] ChangeMaterial changeMaterial;
     [SerializeField] TextMeshPro freqText;
+
+    int frequency;
 
     bool easter1;
     bool easter2;
@@ -84,7 +84,7 @@ public class RadioBehaviour : MonoBehaviour
 
     void PrintFrequency()
     {
-        freqText.text = frequency.ToString();
+        freqText.text = frequency.ToString() + " Hz";
     }
 
     public void CalculateFrequency(float currentAngle)
