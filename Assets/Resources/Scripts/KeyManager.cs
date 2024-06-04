@@ -24,6 +24,6 @@ public class KeyManager : MonoBehaviour
     void EndGame()
     {
         gameEnded = true;
-        // do fadetoBLACK
+        GetComponent<SceneChanger>().ChangeScene("ThanksScreen");
     }
 }

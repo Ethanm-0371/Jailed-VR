@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/Level_Blockout.unity
     guid: e3791aaa2c8e6664cb5de011fd57d027
+  - enabled: 1
+    path: Assets/Resources/Scenes/ThanksScreen.unity
+    guid: 17b07e2776678ed41837e3eb8e7979af
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3ada5998d9ccfa4438f49e6134295479, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: af0277d316badfe4f8f8f91e2fd8bb99, type: 2}
