@@ -3,37 +3,17 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class VibrationTest : MonoBehaviour
 {
+    [Range(0,1)]
+    public float intensity;
+    public float duration;
+
     XRBaseController controller;
     XRDirectInteractor controllerInteractor;
-
-    enum PulseState
-    {
-        D1,
-        E,
-        A,
-        D2,
-    }
-
-    PulseState pulseState;
-
-    float pulseTimer;
-    float timeBetween;
-    float pulseStrength;
-    float longPulseDuration;
-    float shortPulseDuration;
 
     private void Start()
     {
         GetComponent<XRGrabInteractable>().selectEntered.AddListener(OnSelectEntered);
         GetComponent<XRGrabInteractable>().selectExited.AddListener(OnSelectExited);
-
-        pulseTimer = 0;
-        timeBetween = 0.2f;
-        pulseStrength = 0.5f;
-        longPulseDuration = 0.8f;
-        shortPulseDuration = 0.2f;
-
-        pulseState = PulseState.D1;
     }
 
     private void OnSelectEntered(SelectEnterEventArgs args)
@@ -46,10 +26,9 @@ public class VibrationTest : MonoBehaviour
     {
         controller = null;
         controllerInteractor = null;
-
-        pulseState = PulseState.D1;
     }
 
+    float timer = 0.0f;
     private void Update()
     {
         if (controllerInteractor.IsSelecting(GetComponent<XRBaseInteractable>()))
@@ -60,115 +39,26 @@ public class VibrationTest : MonoBehaviour
 
     void DoPulses()
     {
-        switch (pulseState)
-        {
-            case PulseState.D1:
-                LetterD1Code();
-                break;
-            case PulseState.E:
-                LetterECode();
-                break;
-            case PulseState.A:
-                LetterACode();
-                break;
-            case PulseState.D2:
-                LetterD2Code();
-                break;
-        }
+        timer += Time.deltaTime;
+
+        if (timer > 0.5f) { TriggerHaptic(controller); }
+
+        if (timer > 1.0f) { timer -= 1.0f; }
     }
 
-    void LetterD1Code()
+    //void TriggerHaptic(BaseInteractionEventArgs eventArgs)
+    //{
+    //    if (eventArgs.interactorObject is XRBaseControllerInteractor controllerInteractor)
+    //    {
+    //        TriggerHaptic(controllerInteractor.xrController);
+    //    }
+    //}
+
+    void TriggerHaptic(XRBaseController controller)
     {
-        pulseTimer += Time.deltaTime;
-
-        if (pulseTimer < longPulseDuration)
+        if (intensity > 0)
         {
-            LongHaptic();
+            controller.SendHapticImpulse(intensity, duration);
         }
-
-        if (pulseTimer < longPulseDuration + shortPulseDuration + timeBetween && pulseTimer > longPulseDuration + timeBetween)
-        {
-            ShortHaptic();
-        }
-
-        if (pulseTimer < longPulseDuration + shortPulseDuration + shortPulseDuration + timeBetween * 2 && pulseTimer > longPulseDuration + shortPulseDuration + timeBetween * 2)
-        {
-            ShortHaptic();
-        }
-        else
-        {
-            pulseState = PulseState.E;
-            pulseTimer = 0;
-        }
-    }
-
-    void LetterECode()
-    {
-        pulseTimer += Time.deltaTime;
-
-        if (pulseTimer < shortPulseDuration)
-        {
-            ShortHaptic();
-        }
-        else
-        {
-            pulseState = PulseState.A;
-            pulseTimer = 0;
-        }
-    }
-
-    void LetterACode()
-    {
-        pulseTimer += Time.deltaTime;
-
-        if (pulseTimer < shortPulseDuration)
-        {
-            ShortHaptic();
-        }
-
-        if (pulseTimer < longPulseDuration + shortPulseDuration + timeBetween && pulseTimer > shortPulseDuration + timeBetween)
-        {
-            LongHaptic();
-        }
-        else
-        {
-            pulseState = PulseState.D2;
-            pulseTimer = 0;
-        }
-    }
-
-    void LetterD2Code()
-    {
-        pulseTimer += Time.deltaTime;
-
-        if (pulseTimer < longPulseDuration)
-        {
-            LongHaptic();
-        }
-
-        if (pulseTimer < longPulseDuration + shortPulseDuration && pulseTimer > longPulseDuration)
-        {
-            ShortHaptic();
-        }
-
-        if (pulseTimer < longPulseDuration + shortPulseDuration + shortPulseDuration && pulseTimer > longPulseDuration + shortPulseDuration)
-        {
-            ShortHaptic();
-        }
-        else
-        {
-            pulseState = PulseState.D1;
-            pulseTimer = 0;
-        }
-    }
-
-    void ShortHaptic()
-    {
-        controller.SendHapticImpulse(pulseStrength, shortPulseDuration);
-    }
-
-    void LongHaptic()
-    {
-        controller.SendHapticImpulse(pulseStrength, longPulseDuration);
     }
 }
