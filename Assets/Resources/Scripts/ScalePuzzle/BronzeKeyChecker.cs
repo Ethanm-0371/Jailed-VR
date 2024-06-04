@@ -30,7 +30,7 @@ public class BronzeKeyChecker : MonoBehaviour
     void OnSelectEntered(SelectEnterEventArgs args)
     {
         Debug.Log("Object entered socket: " + args.interactableObject.transform.name);
-        if (args.interactableObject.transform.name != "PF_BronzeKey")
+        if (args.interactableObject.transform.name != "Bronze Key")
         {
             bronzeKeyInteractor.interactionManager.SelectExit(bronzeKeyInteractor, bronzeKeyInteractor.selectTarget);
         }

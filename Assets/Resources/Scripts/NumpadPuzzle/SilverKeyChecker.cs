@@ -30,7 +30,7 @@ public class SilverKeyChecker : MonoBehaviour
     void OnSelectEntered(SelectEnterEventArgs args)
     {
         Debug.Log("Object entered socket: " + args.interactableObject.transform.name);
-        if (args.interactableObject.transform.name != "PF_SilverKey")
+        if (args.interactableObject.transform.name != "Silver Key")
         {
             silverKeyInteractor.interactionManager.SelectExit(silverKeyInteractor, silverKeyInteractor.selectTarget);
         }

@@ -30,7 +30,7 @@ public class GoldKeyChecker : MonoBehaviour
     void OnSelectEntered(SelectEnterEventArgs args)
     {
         Debug.Log("Object entered socket: " + args.interactableObject.transform.name);
-        if (args.interactableObject.transform.name != "PF_GoldKey")
+        if (args.interactableObject.transform.name != "Gold Key")
         {
             goldKeyInteractor.interactionManager.SelectExit(goldKeyInteractor, goldKeyInteractor.selectTarget);
         }
