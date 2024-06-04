@@ -6,6 +6,7 @@ public class Puzzle3Safebox : MonoBehaviour
 {
     [SerializeField] GameObject[] objectsToRotate;
     [SerializeField] GameObject key;
+    AudioSource audioSource;
 
     float currentTime;
     float angleToRotate;
@@ -14,6 +15,7 @@ public class Puzzle3Safebox : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         angleToRotate = -150;
         currentTime = 0;
         open = false;
@@ -35,6 +37,7 @@ public class Puzzle3Safebox : MonoBehaviour
     public void OpenSafebox()
     {
         open = true;
+        audioSource.PlayOneShot(audioSource.clip);
         key.SetActive(true);
     }
 }

@@ -21,6 +21,7 @@ public class NumpadController : MonoBehaviour
     public AudioClip buttonSfx;
     public AudioClip correctSfx;
     public AudioClip incorrectSfx;
+    public AudioClip boxOpenSfx;
     private AudioSource audioSource;
 
     private bool hasUsedCorrectCode = false;
@@ -105,6 +106,6 @@ public class NumpadController : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(-130, 0, 0);
         objectToTrigger.transform.rotation = rotation;
         key.SetActive(true);
-
+        audioSource.PlayOneShot(boxOpenSfx);
     }
 }
