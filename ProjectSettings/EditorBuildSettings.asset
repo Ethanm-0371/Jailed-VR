@@ -4,7 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Resources/Scenes/WarningScene.unity
+    guid: 8517567fc5fd8854e9bdaa885f226ce8
+  - enabled: 1
+    path: Assets/Resources/Scenes/Level_Blockout.unity
+    guid: e3791aaa2c8e6664cb5de011fd57d027
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3ada5998d9ccfa4438f49e6134295479, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: af0277d316badfe4f8f8f91e2fd8bb99, type: 2}
+  m_UseUCBPForAssetBundles: 0
