@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlacklightHideTest
+  m_Name: M_8
   m_Shader: {fileID: 4800000, guid: 8a3d3a81abb2dd24fb0df0853490349d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 92bbf9554c23e2e458fc969b0d1fb6a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 99d13295c4aa99546b9998c1c17da24e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -35,6 +35,6 @@ Material:
     - _StrengthScalar: 50
     m_Colors:
     - _Color: {r: 0.79036707, g: 0.4009434, b: 1, a: 1}
-    - _LightDirection: {r: 0.2088424, g: 0.032658413, b: 0.9774039, a: 0}
-    - _LightPosition: {r: -12.321924, g: 1.3442346, b: -4.125211, a: 0}
+    - _LightDirection: {r: -0.28397346, g: 0.00000008195639, b: 0.9588324, a: 0}
+    - _LightPosition: {r: -11.270214, g: 0.029999971, b: -0.6442386, a: 0}
   m_BuildTextureStacks: []
